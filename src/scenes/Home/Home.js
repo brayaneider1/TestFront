@@ -40,7 +40,7 @@ export const Home = () => {
 
 
 
-  const [menu, setMenu] = useState(false)
+  const [menu, setMenu] = useState(true)
   return (
     <div className="container__lg">
       <div className="home">
