@@ -1,77 +1,31 @@
-import React,{useState} from 'react'
-import Slider from "react-slick";
+import React, { useState } from 'react'
 import CategoriesDummy from '../../../common/dummy/categories.json'
+import AliceCarousel from 'react-alice-carousel';
 
-export const CategorySection = ({menu}) => {
+export const CategorySection = ({ menu }) => {
   const [active, setActive] = useState()
 
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    initialSlide: 0,
-     responsive: [
-      {
-        breakpoint: 2560,
-        settings: {
-          slidesToShow: 6,
-          slidesToScroll: 1
-        }
-      },
-      {
-        breakpoint: 1440,
-        settings: {
-          slidesToShow: 6,
-          slidesToScroll: 1
-        }
-      },
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 7,
-          slidesToScroll: 3
-        }
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 5,
-          slidesToScroll: 2,
-          initialSlide: 2
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1
-        }
-      }
-    ] 
-  };
 
-const handleActive=(e)=>{
+  const items = CategoriesDummy.map((i) => (
+    <div className="box" >
+      <div key={i.id} onClick={() => handleActive(i.id)} className={`box__card ${active === i.id ? "active" : null}`}>
+        <div className="illustration">
+          <img alt={i.name} src={i.icon} />
+        </div>
+        <span className="name">{i.name}</span>
+      </div>
+    </div>)
+  )
+
+
+
+  const handleActive = (e) => {
     setActive(e)
-  
-
-}
+  }
 
   return (
-    <div style={menu?{width:'calc(70vw - 80px)'}:null} className="categories">
-      <Slider {...settings}>
-        {CategoriesDummy.map((i) => (
-          <div className="box" >
-            <div  key={i.id} onClick={()=>handleActive(i.id)} className={`box__card ${active===i.id?"active":null}`}>
-              <div className="illustration">
-                <img alt={i.name} src={i.icon} />
-              </div>
-              <span className="name">{i.name}</span>
-            </div>
-          </div>)
-        )}
-      </Slider>
+    <div className={`categories ${!menu? 'categories--lg': 'categories--xs'}`} >
+      <AliceCarousel  responsive={{ 0: { items: 3 }, 500: { items: 5 }, 1000: { items: 8 } }}  disableButtonsControls={true} disableDotsControls={true} items={items}  />
     </div>
   )
 }

@@ -26,9 +26,8 @@ export const Login = () => {
   }
 
   return (
-    <div style={{ backgroundImage: `url(${BgBlue})` }} className="login">
+    <div className="login">
       <div className="login__content">
-
         <h1>¡Bienvenido de nuevo!</h1>
         <p>Inicia sesión </p>
 

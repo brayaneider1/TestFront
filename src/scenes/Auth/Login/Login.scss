@@ -5,10 +5,12 @@
   justify-content: center;
   align-items: center;
   background-size: 100% 100%;
+  background: #fff7eb;
 
   &__content {
     border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.349);
+    background: #e0e0e0;
+    box-shadow: 5px -5px 10px #bebebe, -5px 5px 10px #ffffff;
     height: auto;
     width: auto;
     padding: 30px;
@@ -32,9 +34,8 @@
       color: $black-color;
       align-self: flex-start;
       margin-bottom: 20px;
-
     }
-    span{
+    span {
       font-size: 12px;
       color: $orange-color;
     }

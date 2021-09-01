@@ -4,8 +4,9 @@ import { Popover } from 'antd';
 import UserIcon from '../../../assets/img/user.svg'
 import { Link } from 'react-router-dom';
 import { BiLogOutCircle } from 'react-icons/bi'
+import { AiOutlineRight } from 'react-icons/ai'
 
-export const Head = ({ user,logout,name }) => {
+export const Head = ({ user, logout, name,menu,setMenu }) => {
   const content = (
     <div>
       <p className="font-bold text-md my-2">{name && name}</p>
@@ -16,6 +17,8 @@ export const Head = ({ user,logout,name }) => {
 
   return (
     <div className="head">
+      <AiOutlineRight onClick={() => setMenu(!menu)} />
+
 
       {user ?
         <Popover content={content} title="">

@@ -3,7 +3,6 @@ import { BannerComponent } from '../../components/ContentComponents/BannerCompon
 import { Header } from '../../components/ContentComponents/Header/Header';
 import hamburguerImage from '../../assets/img/hamburguer.svg'
 import { FiChevronDown, FiClock } from 'react-icons/fi'
-import { AiOutlineRight } from 'react-icons/ai'
 import { ProductsSection } from '../../components/ContentComponents/ProductsSection';
 import { CategorySection } from '../../components/ContentComponents/CategorySection';
 import { Head } from '../../components/SideComponents/Head';
@@ -43,8 +42,8 @@ export const Home = () => {
 
   const [menu, setMenu] = useState(false)
   return (
-    <div className="home">
-      <div className="container__lg">
+    <div className="container__lg">
+      <div className="home">
         <div style={menu === true ? { flex: "0.7" } : null} className="home__content">
           <Header menu={menu} setMenu={setMenu} />
           <BannerComponent />
@@ -57,8 +56,7 @@ export const Home = () => {
         </div>
         {menu === true &&
           <div className="home__side">
-            <AiOutlineRight onClick={() => setMenu(!menu)} />
-            <Head name={name} user={user} logout={logout} />
+            <Head name={name} user={user} logout={logout} menu={menu} setMenu={setMenu} />
             <Articles />
           </div>
         }

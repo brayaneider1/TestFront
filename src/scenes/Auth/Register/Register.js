@@ -26,7 +26,7 @@ export const Register = () => {
     registerWithEmailAndPassword(data.name, data.email, data.password);
   };
   return (
-    <div style={{ backgroundImage: `url(${BgBlue})` }} className="register">
+    <div className="register">
       <div className="register__content">
 
         <h1>¡Nos alegra tu visita!</h1>

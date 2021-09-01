@@ -5,6 +5,13 @@
   justify-content: flex-end;
   align-items: center;
   margin-bottom: 60px;
+  position: relative;
+
+  svg{
+    position: absolute;
+    left: 0;
+    cursor: pointer;
+  }
 
   &__auth{
     display: flex;
