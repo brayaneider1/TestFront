@@ -32,7 +32,7 @@ export const ProductsSection = ({ menu }) => {
   return (
     <div className={`products ${!menu? 'products--lg': 'products--xs'}`}>
 
-      <AliceCarousel responsive={{ 0: { items: 0 }, 500: { items: 2 }, 1000: { items: 3 } }} disableButtonsControls={true} disableDotsControls={true} items={items} />
+      <AliceCarousel autoPlay={true} responsive={{ 0: { items: 0 }, 500: { items: 2 }, 1000: { items: 3 } }} disableButtonsControls={true} disableDotsControls={true} items={items} />
 
     </div>
   )
