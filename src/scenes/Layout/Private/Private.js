@@ -5,7 +5,7 @@ import { Home } from '../../Home/Home'
 export const Private = () => {
   return (
     <Router>
-      <Switch className="h-100">
+      <Switch className="">
         <Route exact path="/" component={Home} />
       </Switch>
     </Router>

@@ -2,13 +2,14 @@
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: row-reverse;
   justify-content: center;
   &__content {
-    width: 70%;
+    flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 0 4%;
+    align-items: stretch;
+    padding: 0 70px;
 
     .head__restaurant {
       width: 100%;
@@ -16,17 +17,19 @@
       align-items: center;
       justify-content: space-between;
       margin: 5% 0;
-      .title{
-        font-size: 28px;
+      .title {
+        font-size: 27px;
         color: $black-color;
-        font-weight: bold;
-        img{
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        img {
           margin: 0 10px;
           width: auto;
-          height: 28px;
+          height: 25px;
         }
       }
-      button{
+      button {
         display: flex;
         align-items: center;
         font-weight: 400;
@@ -36,23 +39,37 @@
         background: $orange-color;
         border-radius: 25px;
         width: auto;
-        font-size: 20px;
-        svg{
-          width: 20px;
-          height: 20px;
-          margin: 0 10px;
+        font-size: 15px;
+        svg {
+          width: 15px;
+          height: 15px;
+          margin: 0 5px;
         }
-        b{
+        b {
           font-weight: bold;
           margin: 0 5px;
         }
-
       }
     }
   }
 
   &__side {
-    width: 30%;
-    background: #ff8000;
+    flex: 0.3;
+    background: #fdfdfb;
+    border-left: 0.1px solid #f1f1ef77;
+    -webkit-animation: slide-in-blurred-right 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
+    animation: slide-in-blurred-right 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
+
+    svg{
+      font-size: 27px;
+      margin-top: 20px;
+      color: $black-color;
+    }
+    @media (max-width: 1024px) {
+      position: fixed;
+      right: 0;
+      z-index: 10;
+      height: 100%;
+    }
   }
 }

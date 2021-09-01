@@ -1,24 +1,69 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { BannerComponent } from '../../components/ContentComponents/BannerComponent';
 import { Header } from '../../components/ContentComponents/Header/Header';
 import hamburguerImage from '../../assets/img/hamburguer.svg'
 import { FiChevronDown, FiClock } from 'react-icons/fi'
+import { AiOutlineRight } from 'react-icons/ai'
 import { ProductsSection } from '../../components/ContentComponents/ProductsSection';
+import { CategorySection } from '../../components/ContentComponents/CategorySection';
+import { Head } from '../../components/SideComponents/Head';
+import { Articles } from '../../components/SideComponents/Articles';
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth, db, logout } from "../../common/utils/firebase";
+import { Loading } from '../../components/Loading/Loading';
+
+
+
 export const Home = () => {
+  const [name, setName] = useState()
+
+  const [user, loading] = useAuthState(auth);
+  const fetchUserName = async () => {
+    try {
+      const query = await db
+        .collection("users")
+        .where("uid", "==", user?.uid)
+        .get();
+      const data = await query.docs[0].data();
+      setName(data.name);
+
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    if (loading) return;
+    if (!user) return;
+    fetchUserName();
+  }, [fetchUserName, user, loading]);
+
+
+
+
+  const [menu, setMenu] = useState(false)
   return (
     <div className="home">
-      <div className="home__content">
-        <Header />
-        <BannerComponent />
-        <div className="head__restaurant" >
-          <span className="title" > Restaurants <img alt="hamburguer" src={hamburguerImage} /></span>
-          <button><FiClock />Delivery:<b>Now</b> <FiChevronDown />  </button>
+      <div className="container__lg">
+        <div style={menu === true ? { flex: "0.7" } : null} className="home__content">
+          <Header menu={menu} setMenu={setMenu} />
+          <BannerComponent />
+          <div className="head__restaurant" >
+            <span className="title" > Restaurants <img alt="hamburguer" src={hamburguerImage} /></span>
+            <button><FiClock />Delivery:<b>Now</b> <FiChevronDown />  </button>
+          </div>
+          <CategorySection menu={menu} />
+          <ProductsSection menu={menu} />
         </div>
-        <ProductsSection/>
+        {menu === true &&
+          <div className="home__side">
+            <AiOutlineRight onClick={() => setMenu(!menu)} />
+            <Head name={name} user={user} logout={logout} />
+            <Articles />
+          </div>
+        }
       </div>
-      <div className="home__side">
-        adadF
-      </div>
+      <Loading visible={loading} />
     </div>
   )
 }

@@ -1,8 +1,14 @@
 //Scenes
 @import "./../../scenes/Home/Home.scss";
+@import "./../../scenes/Auth/Login/Login.scss";
+@import "./../../scenes/Auth/Register/Register.scss";
 
 //Components
 
 @import "./../../components/ContentComponents/Header/Header.scss";
 @import "./../../components/ContentComponents/BannerComponent/index.scss";
 @import "./../../components/ContentComponents/ProductsSection/index.scss";
+@import "./../../components/ContentComponents/CategorySection/index.scss";
+@import "./../../components/SideComponents/Head/index.scss";
+@import "./../../components/SideComponents/Articles/index.scss";
+@import "./../../components/Loading/Loading.scss";

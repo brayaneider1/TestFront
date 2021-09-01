@@ -5,7 +5,6 @@ import { auth } from "./AuthActions";
 
 function* login(data) {  
   //const response = yield Api.get('/institution')
-  console.log(data);
   
   if(true){
     yield put(auth.loginResponse('asdasd'))
