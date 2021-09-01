@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import BgBlue from '../../../assets/img/blueGradient.jpg'
 import { FcGoogle } from 'react-icons/fc'
 import { AiFillHome } from 'react-icons/ai'
 import { useForm } from "react-hook-form";
