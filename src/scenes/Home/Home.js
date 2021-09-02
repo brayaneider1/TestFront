@@ -17,19 +17,22 @@ export const Home = () => {
   const [name, setName] = useState()
 
   const [user, loading] = useAuthState(auth);
-  const fetchUserName = async () => {
-    try {
-      const query = await db
-        .collection("users")
-        .where("uid", "==", user?.uid)
-        .get();
-      const data = await query.docs[0].data();
-      setName(data.name);
+  const fetchUserName = useCallback(async() => {
+     
+      try {
+        const query = await db
+          .collection("users")
+          .where("uid", "==", user?.uid)
+          .get();
+        const data = await query.docs[0].data();
+        setName(data.name);
 
-    } catch (err) {
-      console.error(err);
-    }
-  };
+      } catch (err) {
+        console.error(err);
+      }
+    
+
+  },[user])
 
   useEffect(() => {
     if (loading) return;
@@ -40,7 +43,7 @@ export const Home = () => {
 
 
 
-  const [menu, setMenu] = useState(false)
+  const [menu, setMenu] = useState(true)
   return (
     <div className="container__lg">
       <div className="home">
